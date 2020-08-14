@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    width: 800px;
+    height: 70px;
+    background-color:#003366;
+    color: white;
+}
+
+.home,
+.order,
+.addbussiness {
+    width: 150px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 25px;
+}
+
+/* .home:focus,
+.order:focus,
+.addbussiness::before{
+    background-color: white;
+}
+.home:focus,
+.order:focus,
+.addbussiness:focus{
+    background-color: white;
+} */
