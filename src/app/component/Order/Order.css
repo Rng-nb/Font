@@ -1,0 +1,11 @@
+.orderbody{
+    width: 700px;
+    margin: 0px auto;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.myheader {
+    display: flex;
+    justify-content: space-between;
+}

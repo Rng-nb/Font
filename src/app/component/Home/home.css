@@ -3,15 +3,7 @@
     margin: 0px auto;
     margin-top: 20px;
     background-color: white;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.homefoot{
-    width: 500px;
-    height: 60px;
-    margin: 0px auto;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    text-align: center;
-    line-height: 60px;
-}
