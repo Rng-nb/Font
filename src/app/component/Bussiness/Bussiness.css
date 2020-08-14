@@ -1,0 +1,23 @@
+.bussinessinfo{
+    border: solid;
+    border-color: beige;
+    width: 200px;
+    height: 265px;
+    margin:10px;
+}
+.bussinesspic{
+    width: 150px;
+    height: 165px;
+    margin: 0px auto;
+}
+.bussinessdes{
+    width: 150px;
+    height: 60px;
+    line-height: 30px;
+    margin: 0px auto;
+}
+.bussinessdes > span {
+    width: 25px;
+    height: 25px;
+    float: right;
+}
