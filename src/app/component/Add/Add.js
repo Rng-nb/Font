@@ -11,8 +11,8 @@ const sendData = (data) => {
          'content-type': 'application/json'
       }
    }
-   fetch('http://localhost:8080/busInfo',options)
-   .then(console.log("post 成功")).catch(console.log("post 失败"));
+   fetch('http://localhost:8080/bsInfo',options)
+   .then(console.log("post 成功"));
 }
 class Add extends React.Component {
    constructor(props) {
@@ -26,71 +26,77 @@ class Add extends React.Component {
    }
 
    handleNameChange = (event) => {
-      this.state({
+      this.setState({
          productName: event.target.value,
       })
    }
    handlePriceChange = (event) => {
-      this.state({
+      this.setState({
          productPrice: event.target.value,
       })
    }
    handleUnitChange = (event) => {
-      this.state({
+      this.setState({
          productUnit: event.target.value,
       })
    }
    handleUrlChange = (event) => {
-      this.state({
+      this.setState({
          productUrl: event.target.value,
       })
    }
 
    handleSubmit = () => {
-      data={
+      sendData({
          productName: this.state.productName,
          productPrice: this.state.productPrice,
          productUnit: this.state.productUnit,
          productUrl: this.state.productUrl,
-      }
-      sendData(data);
+      })
+
+      this.setState({
+         productName: '',
+         productPrice: '',
+         productUnit: '',
+         productUrl: '',
+      })
    }
     render() { return (
       <div>
         <div className="addbody">
           <div className="adddes">添加商品</div>
           <div className="form-group myinfo">
-            <label htmlFor="exampleFormControlInput1">*名称</label>
-            <input type="email" className="form-control" id="exampleFormControlInput1" 
-            placeholder="name@example.com" 
+            <label htmlFor="name">*名称</label>
+            <input type="text" className="form-control" id="name" 
+            placeholder="名字" 
             value={this.state.productName}
             onChange={this.handleNameChange}/>
          </div>
          <div className="form-group myinfo">
-            <label htmlFor="exampleFormControlInput1">*价格</label>
-            <input type="email" className="form-control" id="exampleFormControlInput1" 
+            <label htmlFor="price">*价格</label>
+            <input type="email" className="form-control" id="price" 
             placeholder="价格"
             value={this.state.productPrice}
             onChange={this.handlePriceChange} />
          </div>
          <div className="form-group myinfo">
-            <label htmlFor="exampleFormControlInput1">*单位</label>
-            <input type="email" className="form-control" id="exampleFormControlInput1" 
+            <label htmlFor="unit">*单位</label>
+            <input type="email" className="form-control" id="unit" 
             placeholder="单位"
             value={this.state.productUnit}
             onChange={this.handleUnitChange} />
          </div>
          <div className="form-group myinfo">
-            <label htmlFor="exampleFormControlInput1">*图片</label>
-            <input type="email" className="form-control" id="exampleFormControlInput1" 
-            placeholder="图片"
+            <label htmlFor="picture">*图片</label>
+            <input type="email" className="form-control" id="picture" 
+            placeholder="图片URL"
             value={this.state.productUrl}
             onChange={this.handleUrlChange} />
          </div>
          <input className="btn btn-primary mybutton" type="submit" 
          value="提 交"
          disabled={!(this.state.productName && this.state.productPrice && this.state.productUnit && this.state.productUrl)}
-         onChange={this.handleSubmit}></input>
+         onClick={this.handleSubmit}></input>
       </div>
       <Footer />
     </div>);

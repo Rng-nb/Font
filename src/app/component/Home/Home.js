@@ -2,19 +2,35 @@ import React from 'react';
 import Bussiness from '../Bussiness/Bussiness';
 import Footer from '../Footer/Footer';
 import './home.css';
-const Home = () => {
-  return (
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      bussiness:'',
+    };
+  }
+  getDateFromback = (data) => {
+    this.setState({
+      bussiness: data,
+    })
+  }
+  componentDidMount() {
+    fetch('http://localhost:8080/bsInfo','Get').then(
+      response => {
+        this.getDateFromback(response.text);
+      }
+    );
+  }
+  render() { return (
     <div>
       <div className="homebody">
-        <Bussiness />
-        <Bussiness />
-        <Bussiness />
-        <Bussiness />
-        <Bussiness />
-        <Bussiness />
+        {this.state.bussiness.map(
+          data =><Bussiness dataSource={data} />
+        )}
       </div>
       <Footer />
     </div>);
-};
+  }
+}
 
 export default Home;
