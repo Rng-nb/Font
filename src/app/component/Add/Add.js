@@ -2,6 +2,18 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import './Add.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
+const sendData = (data) => {
+   const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+         'content-type': 'application/json'
+      }
+   }
+   fetch('http://localhost:8080/busInfo',options)
+   .then(console.log("post 成功")).catch(console.log("post 失败"));
+}
 class Add extends React.Component {
    constructor(props) {
       super(props);
@@ -32,6 +44,16 @@ class Add extends React.Component {
       this.state({
          productUrl: event.target.value,
       })
+   }
+
+   handleSubmit = () => {
+      data={
+         productName: this.state.productName,
+         productPrice: this.state.productPrice,
+         productUnit: this.state.productUnit,
+         productUrl: this.state.productUrl,
+      }
+      sendData(data);
    }
     render() { return (
       <div>
